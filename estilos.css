@@ -1,0 +1,92 @@
+*{
+	margin:0;
+}
+
+body{
+	padding: 5%;
+	background: #F9E79F;
+	font-family: 'Google Sans';
+}
+
+#descripcion{
+	width: 650px;
+}
+
+#txt_nombres_apellidos,#txt_ciudad,#txt_telefono,#txt_username{
+	padding: 5px;
+	width: 250px;
+}
+
+#btn_enviar{
+	width: 200px;
+	height: 45px;
+	font-size: 17px;
+	background:#273746;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: 'Google Sans';
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 5px;
+	box-shadow: 1px 1px 2px black;
+	border-style: none;
+}
+
+#positiveActionButton, #negativeActionButton{
+	font-family: 'Google Sans';
+	font-weight: bold;
+	color: #00FF66;
+	text-decoration: none;
+	display: inline-block;
+	float: right;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* snackbar posicionarlo en la parte inferior central  de la pagina*/
+#snackbar{
+	visibility: hidden;		/* ponerlo en HIDDEN desde aeui por defecto y en el click se pondra visible*/
+	min-width: 250px;		/* se asigna un ancho por defecto */ 
+	margin-left: -125px;	/* es el resultado de dividir el min-width entre 2*/
+	background-color: #333;	/* color negro de fondo */
+	color: white;			/* color de letra */
+	text-align: center;		/* texto centrado */
+	border-radius: 1px;		/* bordes redondos */
+	padding: 16px;			/* margen interna para agrandar el snackbar */
+	position: fixed;		/* sentarlo en la parte superior de la pantalla */
+	z-index: 1;				/* Agregar una capa si es necesario */
+	right: 30px;			/* con esto centras el snackbar */
+	bottom: 30px;			/* y con esto le pone margen desde abajo de la pantalla */
+}
+
+#mensaje{
+	float: left;
+	margin-right: 5px;
+}
+
+/* Mostrar el snackbar cuando clickee el boton (clase añadida por medio de JAVASCRIPT )*/
+
+#snackbar.show{
+	visibility: visible;	/* con esto hace que el snackbar aparezca */
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	-moz-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	-o-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+	from{bottom: 0; opacity: 0;}
+	to{bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+	from{bottom: 0; opacity: 0;}
+	to{bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+	from{bottom: 30px; opacity: 1;}
+	to{bottom: 0; opacity: 0;}
+}
