@@ -86,4 +86,10 @@ function showSnackbar(){
 		positiveActionButton.textContent = "Aceptar y continuar";
 		setTimeout(function(){snackbar.className = snackbar.className.replace("show", "");}, 3000);
 	}
+
+}
+
+function guardar_cambios(){
+	// var btnSave = document.getElementById('btnSave');
+	alert('has guardado los cambios');
 }
