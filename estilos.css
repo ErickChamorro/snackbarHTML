@@ -1,9 +1,12 @@
-*{
-	margin:0;
+html{
+	height: 100%;
 }
 
 body{
-	padding: 5%;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 5% 0% 0% 0%;
 	background: #F9E79F;
 	font-family: 'Google Sans';
 }
@@ -12,16 +15,142 @@ body{
 	width: 650px;
 }
 
+header{
+	/* We want the header to have a static height, 
+	it will always take up just as much space as it needs.  */
+	/* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+	flex: 0 0 auto;
+}
+
+.main-content{
+	/* By setting flex-grow to 1, the main content will take up 
+	all of the remaining space on the page. 
+	The other elements have flex-grow: 0 and won't contest the free space. */
+	/* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+	flex: 1 0 auto;
+	/*arriba: 0, derecha: 5, abajo: 0, izquierda: 5 =>  (al sentido de las manecillas del reloj: desde las 12) */
+	padding: 0% 5% 0% 5%;
+}
+
+footer{
+	/* Like the header, the footer will have a static height - it shouldn't grow or shrink.  */
+	/* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+	flex: 0 0 auto;
+	background-color: #292c2f;
+	/* background-color: #f7e68f; */
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	width: 100%;
+	text-align: left;
+	font: normal 16px sans-serif;	
+	padding: 45px 50px;
+}
+
+footer .footer-limiter {
+	max-width: 880px;
+	margin: 0 auto;
+}
+
+footer .footer-left p{
+	color:  #8f9296;
+	font-size: 14px;
+	margin: 0;
+}
+
+/* Footer links */
+
+footer p.footer-links{
+	font-size:18px;
+	font-weight: bold;
+	color:  #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+footer p.footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+footer .footer-right{
+	float: right;
+	margin-top: 6px;
+	max-width: 180px;
+}
+
+footer .footer-right a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-left: 3px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+	footer .footer-left,
+	footer .footer-right{
+		text-align: center;
+	}
+
+	footer .footer-right{
+		float: none;
+		margin: 0 auto 20px;
+	}
+
+	footer .footer-left p.footer-links{
+		line-height: 1.8;
+	}
+}
+
+#lbl_terminos:hover{
+	cursor: pointer;
+	font-weight: bold;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
 #txt_nombres_apellidos,#txt_ciudad,#txt_telefono,#txt_username{
 	padding: 5px;
 	width: 250px;
 }
 
 #btn_enviar{
-	width: 200px;
+	width: 100%;
+	cursor: pointer;
 	height: 45px;
 	font-size: 17px;
 	background:#273746;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: 'Google Sans';
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 5px;
+	box-shadow: 1px 1px 2px black;
+	border-style: none;
+}
+
+#btnModal{
+	width: 100%;
+	cursor: pointer;
+	height: 45px;
+	font-size: 17px;
+	background-color: #00FF66;
 	color: white;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -57,8 +186,9 @@ body{
 	padding: 16px;			/* margen interna para agrandar el snackbar */
 	position: fixed;		/* sentarlo en la parte superior de la pantalla */
 	z-index: 1;				/* Agregar una capa si es necesario */
-	right: 30px;			/* con esto centras el snackbar */
-	bottom: 30px;			/* y con esto le pone margen desde abajo de la pantalla */
+	right: 15%;			/* con esto centras el snackbar */
+	left: 25%;
+	top: 30px;			/* y con esto le pone margen desde abajo de la pantalla */
 }
 
 #mensaje{
@@ -77,16 +207,62 @@ body{
 }
 
 @-webkit-keyframes fadein {
-	from{bottom: 0; opacity: 0;}
-	to{bottom: 30px; opacity: 1;}
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
 }
 
 @keyframes fadein {
-	from{bottom: 0; opacity: 0;}
-	to{bottom: 30px; opacity: 1;}
+	from{top: 0; opacity: 0;}
+	to{top: 30px; opacity: 1;}
 }
 
 @-webkit-keyframes fadeout {
-	from{bottom: 30px; opacity: 1;}
-	to{bottom: 0; opacity: 0;}
+	from{top: 30px; opacity: 1;}
+	to{top: 0; opacity: 0;}
+}
+
+
+/* /////////////////////////////    MEDIA QUERIESS    ////////////////////////////////////////*/
+
+@media screen and (max-width: 905px){
+	#snackbar{
+	right: 5%;
+	left: 20%;
+	}
+}
+
+@media screen and (max-width: 744px){
+	#snackbar{
+	right: 3.5%;
+	left: 20%;
+	}
+}
+
+@media screen and (max-width: 650px){
+	#snackbar{
+	right: 15%;
+	left: 35%;
+	border-radius: 10px;
+	}
+}
+
+@media screen and (max-width: 530px){
+	#snackbar{
+	right: 15%;
+	left: 39%;
+	}
+}
+
+@media screen and (max-width: 420px){
+	#snackbar{
+	right: 15%;
+	left: 45%;
+	}
+}
+
+@media screen and (max-width: 350px){
+	#snackbar{
+	right: 15%;
+	left: 50%;
+	}
 }
